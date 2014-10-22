@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Custom Post Type UI
+Plugin Name: Custom Post Type UI (forked)
 Plugin URI: http://webdevstudios.com/plugin/custom-post-type-ui/
 Description: Admin panel for creating custom post types and custom taxonomies in WordPress
-Author: WebDevStudios.com
-Version: 0.8.2
+Author: WebDevStudios.com / Evan Sobkowicz
+Version: 100000.0.8.2
 Author URI: http://webdevstudios.com/
 Text Domain: cpt-plugin
 License: GPLv2
@@ -31,11 +31,16 @@ add_action( 'admin_init', 'cpt_delete_post_type' );
 //call register settings function
 add_action( 'admin_init', 'cpt_register_settings' );
 
-//process custom taxonomies if they exist
-add_action( 'init', 'cpt_create_custom_taxonomies', 0 );
+
+// SWITCHING ORDER OF POST TYPES AND TAXONOMIES TO FIX SLUG 404 ISSUE
 
 //process custom taxonomies if they exist
 add_action( 'init', 'cpt_create_custom_post_types', 0 );
+
+//process custom taxonomies if they exist
+add_action( 'init', 'cpt_create_custom_taxonomies', 0 );
+
+
 
 add_action( 'admin_head', 'cpt_help_style' );
 
